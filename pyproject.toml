@@ -50,6 +50,7 @@ Repository = "https://github.com/nicrie/wfde5-anemoi-plugins"
 
 [project.entry-points."anemoi.transform.filters"]
 tp_sf_to_rain = "wfde5_anemoi_plugins.filters.tp_sf_to_rain:TpSfToRain"
+t_d_sp_to_q = "wfde5_anemoi_plugins.filters.t_d_sp_to_q:TDSpToQ"
 
 [tool.setuptools.packages.find]
 include = ["wfde5_anemoi_plugins*"]

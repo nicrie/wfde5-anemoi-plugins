@@ -16,6 +16,18 @@ Derives a rain field from total precipitation and snowfall the way WFDE5 v2.1 fo
     threshold: 1.1574e-5 # kg m-2 s-1; WFDE5's MIN_1HR_RAINF (1/24 mm h-1), default 0
 ```
 
+### `t_d_sp_to_q`
+
+Derives specific humidity (kg kg⁻¹) from temperature and dewpoint (K) and surface pressure (Pa) the way WFDE5 v2.1 forms Qair from ERA5, with temperature and pressure left uncorrected: `q = min(qsat_w(Td, p), qsat_wi(T, p))`, i.e. relative humidity capped at 100 %. Saturation follows Buck (1991) with the pressure enhancement factor, over water for the dewpoint and over water above 0 °C and ice otherwise for the temperature. The inputs pass through unchanged.
+
+```yaml
+- t_d_sp_to_q:
+    temperature: 2t
+    dewpoint: 2d
+    pressure: sp
+    specific_humidity: 2sh
+```
+
 ## Install
 
 ```bash
