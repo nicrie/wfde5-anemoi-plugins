@@ -1,0 +1,55 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools>=60",
+]
+
+[project]
+name = "wfde5-anemoi-plugins"
+version = "0.1.0"
+description = "Anemoi plugins for the WFDE5 near-real-time emulator, such as filters that derive ERA5 counterparts of WFDE5 variables."
+readme = "README.md"
+requires-python = ">=3.12"
+
+authors = [
+  { name = "Niclas Rieger", email = "niclas.rieger@ecmwf.int" },
+]
+
+license = "Apache-2.0"
+
+keywords = [
+  "anemoi",
+  "datasets",
+  "era5",
+  "wfde5",
+  "filter-plugin",
+]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+
+dependencies = [
+  "anemoi-transform>=0.4.2",
+  "earthkit-data",
+  "numpy",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+]
+
+[project.urls]
+Repository = "https://github.com/nicrie/wfde5-anemoi-plugins"
+
+[project.entry-points."anemoi.transform.filters"]
+tp_sf_to_rain = "wfde5_anemoi_plugins.filters.tp_sf_to_rain:TpSfToRain"
+
+[tool.setuptools.packages.find]
+include = ["wfde5_anemoi_plugins*"]
