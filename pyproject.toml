@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "wfde5-anemoi-plugins"
-version = "0.1.0"
+version = "0.2.0"
 description = "Anemoi plugins for the WFDE5 near-real-time emulator: filters that derive ERA5 counterparts of WFDE5 variables, and a source that moves WFDE5 fluxes onto ERA5 timestamps."
 readme = "README.md"
 requires-python = ">=3.12"

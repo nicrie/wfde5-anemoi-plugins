@@ -48,7 +48,7 @@ Wraps a WFDE5 flux source (Rainf, Snowf, LWdown, SWdown) and moves its fields on
 ## Install
 
 ```bash
-pip install git+https://github.com/nicrie/wfde5-anemoi-plugins@v0.1.0
+pip install git+https://github.com/nicrie/wfde5-anemoi-plugins@v0.2.0
 ```
 
 For development, install it editable (`pip install -e .`) into an env with anemoi-transform.
