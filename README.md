@@ -28,6 +28,23 @@ Derives specific humidity (kg kg⁻¹) from temperature and dewpoint (K) and sur
     specific_humidity: 2sh
 ```
 
+## Sources
+
+### `wfde5-flux-era5-time`
+
+Wraps a WFDE5 flux source (Rainf, Snowf, LWdown, SWdown) and moves its fields onto ERA5 timestamps. ERA5 labels a flux with the end of its interval, so its value at t is the mean over (t − 1h, t]; WFDE5 labels it with the start, so its value at t covers [t, t + 1h). For a requested time T the source loads the wrapped source at T − 1h and re-emits each field with `valid_datetime = T`; the values are unchanged.
+
+- If the first requested time equals `global_start`, it is skipped, since WFDE5 has no field an hour before its first timestamp.
+- Any other shifted time that the wrapped source doesn't return raises an error.
+
+```yaml
+- wfde5-flux-era5-time:
+    global_start: "1979-01-01T00:00:00"
+    source:
+      netcdf:
+        path: "/path/to/LWdown_WFDE5_CRU_{date:strftime(%Y%m)}_v2.1.nc"
+```
+
 ## Install
 
 ```bash

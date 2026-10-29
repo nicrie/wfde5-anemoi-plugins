@@ -7,7 +7,7 @@ requires = [
 [project]
 name = "wfde5-anemoi-plugins"
 version = "0.1.0"
-description = "Anemoi plugins for the WFDE5 near-real-time emulator, such as filters that derive ERA5 counterparts of WFDE5 variables."
+description = "Anemoi plugins for the WFDE5 near-real-time emulator: filters that derive ERA5 counterparts of WFDE5 variables, and a source that moves WFDE5 fluxes onto ERA5 timestamps."
 readme = "README.md"
 requires-python = ">=3.12"
 
@@ -23,6 +23,7 @@ keywords = [
   "era5",
   "wfde5",
   "filter-plugin",
+  "source-plugin",
 ]
 
 classifiers = [
@@ -35,7 +36,9 @@ classifiers = [
 ]
 
 dependencies = [
+  "anemoi-datasets>=0.5.40",
   "anemoi-transform>=0.4.2",
+  "anemoi-utils>=0.5",
   "earthkit-data",
   "numpy",
 ]
@@ -51,6 +54,9 @@ Repository = "https://github.com/nicrie/wfde5-anemoi-plugins"
 [project.entry-points."anemoi.transform.filters"]
 tp_sf_to_rain = "wfde5_anemoi_plugins.filters.tp_sf_to_rain:TpSfToRain"
 t_d_sp_to_q = "wfde5_anemoi_plugins.filters.t_d_sp_to_q:TDSpToQ"
+
+[project.entry-points."anemoi.datasets.create.sources"]
+wfde5-flux-era5-time = "wfde5_anemoi_plugins.sources.wfde5_flux_era5_time:Wfde5FluxEra5Time"
 
 [tool.setuptools.packages.find]
 include = ["wfde5_anemoi_plugins*"]
